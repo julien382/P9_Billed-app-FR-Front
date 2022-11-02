@@ -41,7 +41,7 @@
        const datesSorted = [...dates].sort(antiChrono)
        expect(dates).toEqual(datesSorted)
      })
-
+/*
      test("Then bills ", async () => {
        const pageBill = new PageBill({xxx, zzz, yyy})
        const handleShowTickets1 = jest.fn((e) => pageBill.handleClickNewBill())
@@ -61,7 +61,7 @@
       return bill.getBills().then((data) => {
         expect(data).toEqual(bills)
       })
-    })
+    })*/
 
    })
  }) 

@@ -8,7 +8,8 @@
  import { ROUTES_PATH } from "../constants/routes.js";
  import { localStorageMock } from "../__mocks__/localStorage.js";
  import router from "../app/Router.js";
- 
+ import mockedStore from "../__mocks__/store.js" 
+
  describe("Given I am connected as an employee", () => {
    describe("When I am on Bills Page", () => {
      test("Then bill icon in vertical layout should be highlighted", async () => {
@@ -55,6 +56,12 @@
       
     })
 
+    test("Then the method getBill should return bills", () => {
+      const bill = new Bills({document, onNavigate: null, store: mockedStore, localStorage: null})
+      return bill.getBills().then((data) => {
+        expect(data).toEqual(bills)
+      })
+    })
 
    })
  }) 

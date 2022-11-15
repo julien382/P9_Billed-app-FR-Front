@@ -36,7 +36,8 @@
      })
      test("Then bills should be ordered from earliest to latest", async () => {
        document.body.innerHTML = BillsUI({ data: bills })
-       const dates = screen.getAllByText(/^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/i).map(a => a.innerHTML)
+       const dates = screen.getAllByText(/^[0-9]{2}\s\w{3}\.\s[0-9]{2}$/gm).map(a => a.innerHTML)
+       console.log(dates);
        const antiChrono = (a, b) => a - b;
        const datesSorted = [...dates].sort(antiChrono)
        expect(dates).toEqual(datesSorted)

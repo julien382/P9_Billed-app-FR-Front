@@ -10,6 +10,7 @@ import {localStorageMock} from "../__mocks__/localStorage.js";
 import { ROUTES, ROUTES_PATH } from "../constants/routes"
 import mockStore from "../__mocks__/store.js"
 import router from "../app/Router.js";
+import {bills} from "../fixtures/bills.js"
 
 window.alert = jest.fn()
 jest.mock("../app/Store", () => mockStore)
@@ -127,7 +128,7 @@ describe('Given I am a user connected as Employee', () => {//Etant donné que je
         const onNavigate = (pathname) => {
            document.body.innerHTML = ROUTES({pathname});
         };
-//SIMILATION DE LA CONNECTION DE L EMPLOYEE
+//SIMULATION DE LA CONNECTION DE L EMPLOYEE
         Object.defineProperty(window, 'localStorage', { value: localStorageMock })
         window.localStorage.setItem('user', JSON.stringify({
               type: 'Employee'
@@ -140,18 +141,7 @@ describe('Given I am a user connected as Employee', () => {//Etant donné que je
               localStorage: window.localStorage,
         })
 
-        const validBill = {
-              type: "Vol",
-              name: "Paris Algerie",
-              date: "2022-10-25",
-              amount: 400,
-              vat: 70,
-              pct: 30,
-              commentary: "Commentary",
-              fileUrl: "../img/0.jpg",
-              fileName: "test.jpg",
-              status: "pending"
-        };
+        const validBill = bills[0];
 
         // Charger les valeurs dans les champs
         screen.getByTestId("expense-type").value = validBill.type;
